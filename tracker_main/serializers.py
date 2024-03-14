@@ -23,6 +23,9 @@ class DeviceSerializer(serializers.ModelSerializer):
 
 
 class DeviceLogSerializer(serializers.ModelSerializer):
+    device_name = serializers.CharField(source='device_name.name')
+    employee_name = serializers.CharField(source='employee_name.name')
+
     class Meta:
         model = DeviceLog
         fields = ['device_name', 'employee_name', 'check_out_at', 'check_in_at', 'condition_when_checked_out', 'condition_when_checked_at']

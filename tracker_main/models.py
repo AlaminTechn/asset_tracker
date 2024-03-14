@@ -54,4 +54,4 @@ class DeviceLog(models.Model):
         verbose_name_plural = 'Device Log'
 
     def __str__(self):
-        return f"{self.employee_name} taking device : {self.device_name}"
+        return f"{self.employee_name}  {self.device_name}"

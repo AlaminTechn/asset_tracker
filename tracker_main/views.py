@@ -55,3 +55,55 @@ class EmployeeListAPI(APIView):
             result['data'] = employee_serializer
             return Response(result)
         return Response(result_error)
+
+
+# Device API view
+class DeviceListAPI(APIView):
+    permission_classes = []
+
+    def get(self, request):
+        result = {
+                'status':  HTTP_200_OK,
+                'message': 'Success',
+                'data':    []
+        }
+
+        result_error = {
+                'status':  HTTP_400_BAD_REQUEST,
+                'message': 'Device Not Found',
+                'data':    []
+        }
+
+        queryset = Device.objects.all()
+        device_serializer = DeviceSerializer(queryset, many=True).data
+
+        if device_serializer:
+            result['data'] = device_serializer
+            return Response(result)
+        return Response(result_error)
+
+
+# Device Log API view
+class DeviceLogListAPI(APIView):
+    permission_classes = []
+
+    def get(self, request, *args, **kwargs):
+        result = {
+                'status':  HTTP_200_OK,
+                'message': 'Success',
+                'data':    []
+        }
+
+        result_error = {
+                'status':  HTTP_400_BAD_REQUEST,
+                'message': 'Device Not Found',
+                'data':    []
+        }
+
+        queryset = DeviceLog.objects.all()
+        device_log_serializer = DeviceLogSerializer(queryset, many=True).data
+
+        if device_log_serializer:
+            result['data'] = device_log_serializer
+            return Response(result)
+        return Response(result_error)
