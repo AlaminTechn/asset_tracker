@@ -2,4 +2,8 @@
 ```angular2html
     Here is the few examples
 
+login credentials :
+ user : admin
+ password : 123
+
 ```

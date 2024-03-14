@@ -7,7 +7,7 @@ from .models import Company, Employee, Device, DeviceLog
 
 class CompanyAdmin(admin.ModelAdmin):
     model = Company
-    fields = ('name',)
+    fields = ['name']
 
 
 admin.site.register(Company, CompanyAdmin)
@@ -15,7 +15,8 @@ admin.site.register(Company, CompanyAdmin)
 
 class EmployeeAdmin(admin.ModelAdmin):
     model = Employee
-    fields = ('name', 'company')
+    fields = ['name', 'company']
+    readonly_fields = ['name', 'company']
 
 
 admin.site.register(Employee, EmployeeAdmin)
@@ -23,7 +24,7 @@ admin.site.register(Employee, EmployeeAdmin)
 
 class DeviceAdmin(admin.ModelAdmin):
     model = Device
-    fields = ('name',)
+    fields = ['name']
 
 
 admin.site.register(Device, DeviceAdmin)
@@ -31,7 +32,7 @@ admin.site.register(Device, DeviceAdmin)
 
 class DeviceLogAdmin(admin.ModelAdmin):
     model = DeviceLog
-    fields = ('device_name', 'employee_name', 'check_out_at', 'check_in_at', 'condition_when_checked_out', 'condition_when_checked_at')
+    fields = ['device_name', 'employee_name', 'check_out_at', 'check_in_at', 'condition_when_checked_out', 'condition_when_checked_at']
 
 
 admin.site.register(DeviceLog, DeviceLogAdmin)

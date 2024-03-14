@@ -25,7 +25,7 @@ class Employee(models.Model):
         verbose_name_plural = 'Employee'
 
     def __str__(self):
-        return self.name
+        return f"{self.name}"
 
 
 class Device(models.Model):

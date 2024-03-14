@@ -2,26 +2,27 @@ from rest_framework import serializers
 from .models import Company, Employee, Device, DeviceLog
 
 
-class CompanySerializer(serializers.Serializer):
+class CompanySerializer(serializers.ModelSerializer):
     class Meta:
         model = Company
-        fields = '__all__'
+        fields = ['id', 'name']
 
 
-class EmployeeSerializer(serializers.Serializer):
+class EmployeeSerializer(serializers.ModelSerializer):
+    company_name = serializers.CharField(source='company.name', read_only=True)
+
     class Meta:
         model = Employee
-        fields = '__all__'
-        readonly_fields = ['name', 'company', ]
+        fields = ['id', 'name', 'company', 'company_name']
 
 
-class DeviceSerializer(serializers.Serializer):
+class DeviceSerializer(serializers.ModelSerializer):
     class Meta:
         model = Device
         fields = '__all__'
 
 
-class DeviceLogSerializer(serializers.Serializer):
+class DeviceLogSerializer(serializers.ModelSerializer):
     class Meta:
         model = DeviceLog
         fields = ['device_name', 'employee_name', 'check_out_at', 'check_in_at', 'condition_when_checked_out', 'condition_when_checked_at']
